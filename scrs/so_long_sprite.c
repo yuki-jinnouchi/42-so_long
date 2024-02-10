@@ -6,7 +6,7 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:34:19 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 10:10:58 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 13:19:06 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	so_long_put_walls(t_vars *vars)
 			so_long_put_sprite_wrap(vars, wall, i);
 		i++;
 	}
+	// free(wall.reference);
+	mlx_destroy_image(vars->mlx, wall.reference);
 }
 
 void	so_long_put_fields_all(t_vars *vars)
@@ -70,6 +72,8 @@ void	so_long_put_fields_all(t_vars *vars)
 		}
 		i++;
 	}
+	mlx_destroy_image(vars->mlx, nazo.reference);
+	mlx_destroy_image(vars->mlx, hara.reference);
 }
 
 void	so_long_put_pals(t_vars *vars)
@@ -94,6 +98,8 @@ void	so_long_put_pals(t_vars *vars)
 		}
 		i++;
 	}
+	mlx_destroy_image(vars->mlx, pal_00.reference);
+	mlx_destroy_image(vars->mlx, pal_01.reference);
 }
 
 void	so_long_put_exit(t_vars *vars)
@@ -120,4 +126,6 @@ void	so_long_put_exit(t_vars *vars)
 		}
 		i++;
 	}
+	mlx_destroy_image(vars->mlx, o_00.reference);
+	mlx_destroy_image(vars->mlx, o_01.reference);
 }

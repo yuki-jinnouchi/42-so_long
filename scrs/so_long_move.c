@@ -6,7 +6,7 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:34:19 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 09:59:19 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 12:55:46 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	so_long_move_right(t_vars *vars)
 	if (map->structure[point->y][point->x] == 'C')
 		so_long_catch_em(vars, point);
 	if (vars->flag == 1 && map->structure[point->y][point->x] == 'E')
-		so_long_finish();
+		so_long_exit_noerror("Omedeto! (Congrats!)", vars);
 	so_long_put_fields_all(vars);
 	so_long_put_pals(vars);
 	so_long_put_exit(vars);
@@ -52,7 +52,7 @@ void	so_long_move_left(t_vars *vars)
 	if (map->structure[point->y][point->x] == 'C')
 		so_long_catch_em(vars, point);
 	if (vars->flag == 1 && map->structure[point->y][point->x] == 'E')
-		so_long_finish();
+		so_long_exit_noerror("Omedeto! (Congrats!)", vars);
 	so_long_put_fields_all(vars);
 	so_long_put_pals(vars);
 	so_long_put_exit(vars);
@@ -77,7 +77,7 @@ void	so_long_move_up(t_vars *vars)
 	if (map->structure[point->y][point->x] == 'C')
 		so_long_catch_em(vars, point);
 	if (vars->flag == 1 && map->structure[point->y][point->x] == 'E')
-		so_long_finish();
+		so_long_exit_noerror("Omedeto! (Congrats!)", vars);
 	so_long_put_fields_all(vars);
 	so_long_put_pals(vars);
 	so_long_put_exit(vars);
@@ -102,7 +102,7 @@ void	so_long_move_down(t_vars *vars)
 	if (map->structure[point->y][point->x] == 'C')
 		so_long_catch_em(vars, point);
 	if (vars->flag == 1 && map->structure[point->y][point->x] == 'E')
-		so_long_finish();
+		so_long_exit_noerror("Omedeto! (Congrats!)", vars);
 	so_long_put_fields_all(vars);
 	so_long_put_pals(vars);
 	so_long_put_exit(vars);

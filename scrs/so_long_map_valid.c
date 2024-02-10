@@ -6,7 +6,7 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 19:16:15 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 10:01:15 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:15:24 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	so_long_map_char_valid(t_map map)
 	while (count_y < map.height)
 	{
 		count_x = 0;
-		while (++count_x < map.width)
+		while (count_x < map.width)
 		{
 			if (count_x == 0 || count_x == map.width - 1 || \
 				count_y == 0 || count_y == map.height - 1)
@@ -92,7 +92,7 @@ int	so_long_map_post_valids(t_map map)
 	count_collectible = so_long_map_key_count(map, "C");
 	if (count_collectible < 1)
 		return (FAILURE);
-	// if (so_long_map_route_check(map, count_c) == FAILURE)
-	// 	return (FAILURE);
+	if (so_long_map_route_check(map) == FAILURE)
+		return (FAILURE);
 	return (SUCCESS);
 }

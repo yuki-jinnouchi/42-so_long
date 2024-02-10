@@ -6,7 +6,7 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 19:16:15 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 09:55:34 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:36:23 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,7 @@ void	so_long_catch_em(t_vars *vars, t_point *point)
 	map = vars->map;
 	vars->score++;
 	map->structure[point->y][point->x] = '0';
-	ft_putstr_fd("catch em!\n", 1);
-	if (so_long_search_item(vars, 'C') == NULL)
+	ft_putstr_fd("- catch em! -\n", 1);
+	if (so_long_search_item(*vars->map, 'C') == NULL)
 		vars->flag = 1;
-}
-
-void	so_long_finish(void)
-{
-	so_long_exit_noerror("omadeto!(congrats!)", NULL);
 }
