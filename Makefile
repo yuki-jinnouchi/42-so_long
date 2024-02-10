@@ -107,12 +107,8 @@ $(LIBMLX): $(LIBMLX_DIR)
 	@echo "--------------------------------"
 	@echo "make libmlx done.\n"
 $(LIBMLX_DIR):
-	ifeq ($(OS), Linux)
-		@echo "Cloning Minilibx repository..."
-		git clone $(LIBMLX_URL) $(LIBMLX_DIR)
-	else
-		@echo "no Minilibx dir!"
-	endif
+	@echo "Cloning Minilibx Linux repository..."
+	git clone $(LIBX_LINUX_URL) $(LIBMLX_DIR)
 
 # # bonus
 # bonus: all $(BONUS_OBJECTS)
