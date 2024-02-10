@@ -6,16 +6,16 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 19:16:15 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 14:58:16 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:43:32 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int so_long_fill_next_block(t_map *map, int x_position, int y_position, int dir)
+int	so_long_fill_next_block(t_map *map, int x_position, int y_position, int dir)
 {
-	int flag;
-	int x_next;
+	int	flag;
+	int	x_next;
 	int	y_next;
 
 	flag = 0;
@@ -31,25 +31,24 @@ int so_long_fill_next_block(t_map *map, int x_position, int y_position, int dir)
 		y_next = y_position - 1;
 	if (map->structure[y_position][x_position] == 'P')
 	{
-		if (map->structure[y_next][x_next] != '1' \
-			&& map->structure[y_next][x_next] != 'P')
-			{
-				map->structure[y_next][x_next] = 'P';
-				flag = 1;
-			}
+		if (map->structure[y_next][x_next] != '1' && \
+			map->structure[y_next][x_next] != 'P')
+		{
+			map->structure[y_next][x_next] = 'P';
+			flag = 1;
+		}
 	}
 	return (flag);
 }
 
-
 int	so_long_flood_fill(t_map *map)
 {
 	int	flag;
-	int x_count;
-	int y_count;
+	int	x_count;
+	int	y_count;
 
 	flag = 1;
-	while (flag == 1)
+	while (flag > 0)
 	{
 		flag = 0;
 		y_count = 0;
@@ -66,8 +65,8 @@ int	so_long_flood_fill(t_map *map)
 			}
 		}
 	}
-	if (so_long_map_key_count(*map, "C") + so_long_map_key_count(*map, "E") == 0)
-		return(SUCCESS);
+	if (so_long_map_key_count(*map, "CE") == 0)
+		return (SUCCESS);
 	return (FAILURE);
 }
 
@@ -80,14 +79,14 @@ t_map	*so_long_copy_map(t_map map)
 	map_copy = malloc(sizeof(t_map));
 	if (map_copy == NULL)
 		return (NULL);
-	struct_cpy = malloc((map.height + 1)* sizeof(char*));
+	struct_cpy = malloc((map.height + 1) * sizeof(char *));
 	if (struct_cpy == NULL)
 	{
 		free(map_copy);
 		return (NULL);
 	}
 	i = 0;
-	while(i < map.height)
+	while (i < map.height)
 	{
 		struct_cpy[i] = ft_strdup(map.structure[i]);
 		i++;
@@ -100,13 +99,13 @@ t_map	*so_long_copy_map(t_map map)
 }
 
 /*check if there is a route*/
-int so_long_map_route_check(t_map map)
+int	so_long_map_route_check(t_map map)
 {
 	t_map	*map_copy;
 	int		flag;
 
 	map_copy = so_long_copy_map(map);
-	if(map_copy == NULL)
+	if (map_copy == NULL)
 		return (FAILURE);
 	flag = so_long_flood_fill(map_copy);
 	so_long_free_map(map_copy);

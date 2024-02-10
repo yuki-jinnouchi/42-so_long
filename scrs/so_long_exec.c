@@ -6,7 +6,7 @@
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:34:19 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 15:32:57 by yjinnouc         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:10:09 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	so_long_exec_game(t_vars *vars)
 	so_long_put_pals(vars);
 	so_long_put_player(vars, "textures/02.xpm");
 	mlx_key_hook(vars->win, so_long_key_hooks, vars);
-	// mlx_mouse_hook(vars->win, so_long_mouse_hooks, vars);
 	mlx_hook(vars->win, 17, 0L, so_long_destroy_wrapper, vars);
 	mlx_loop(vars->mlx);
 }

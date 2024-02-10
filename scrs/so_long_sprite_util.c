@@ -1,36 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_collection.c                               :+:      :+:    :+:   */
+/*   so_long_sprite_util.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yjinnouc <yjinnouc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 19:16:15 by yjinnouc          #+#    #+#             */
-/*   Updated: 2024/02/10 16:49:38 by yjinnouc         ###   ########.fr       */
+/*   Created: 2024/02/08 22:34:19 by yjinnouc          #+#    #+#             */
+/*   Updated: 2024/02/10 16:20:26 by yjinnouc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	so_long_count_score(t_vars *vars)
+void	*so_long_image_wrap(void *xvar, char *file)
 {
-	vars->score++;
-	ft_putstr_fd("score: ", 1);
-	ft_putnbr_fd(vars->score, 1);
-	ft_putchar_fd('\n', 1);
+	void	*ptr;
+	int		size;
+
+	size = BASE_SIZE;
+	ptr = mlx_xpm_file_to_image(xvar, file, &size, &size);
+	return (ptr);
 }
 
-void	so_long_catch_em(t_vars *vars, t_point *point)
+void	so_long_put_sprite_wrap(t_vars *vars, t_sprite icon, int i)
 {
 	t_map	*map;
-	t_point	*new_point;
 
 	map = vars->map;
-	vars->score++;
-	map->structure[point->y][point->x] = '0';
-	ft_putstr_fd("- catch em! -\n", 1);
-	new_point = so_long_search_item(*vars->map, 'C');
-	if (new_point != NULL)
-		vars->flag = 1;
-	free(new_point);
+	mlx_put_image_to_window(vars->mlx, vars->win, icon.reference, \
+		BASE_SIZE * (i % map->width), BASE_SIZE * (i / map->width));
 }
